@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #1B2A4A;
+  --color-navy-light: #2C4066;
+  --color-gold: #C4A24E;
+  --color-gold-light: #D4B96A;
+  --color-warm: #F8F7F4;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-navy font-sans antialiased;
+    background-color: #FBFAF7;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-navy;
+  }
+}
+
+@layer utilities {
+  .wall-texture {
+    position: relative;
+  }
+
+  .wall-texture::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(200, 195, 185, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(200, 195, 185, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 20%, rgba(200, 195, 185, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(200, 195, 185, 0.06) 0%, transparent 50%);
+  }
+
+  @keyframes pulse-whatsapp {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35); }
+    50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.6); }
+  }
+
+  .whatsapp-pulse {
+    animation: pulse-whatsapp 2s ease-in-out infinite;
+  }
+}
